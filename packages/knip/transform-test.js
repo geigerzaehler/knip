@@ -1,13 +1,10 @@
-import { readFile } from 'node:fs/promises';
-import module from 'node:module';
+import module from "node:module";
 
-module.register('./transform-test.js', { parentURL: import.meta.url });
+module.register("./transform-test.js", { parentURL: import.meta.url });
 
-export async function load(url, context, next) {
-  if (url.endsWith('.test.ts')) {
-    const content = await readFile(new URL(url), 'utf8');
-    const source = content.replace(/import { test } from 'bun:test';/, `import test from 'node:test';`);
-    return next(url, { ...context, source });
+export async function resolve(specifier, context, next) {
+  if (specifier === "bun:test") {
+    specifier = "node:test";
   }
-  return next(url, context);
+  return next(specifier, context, next);
 }
