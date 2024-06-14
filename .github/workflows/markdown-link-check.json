@@ -1,6 +1,0 @@
-{
-  "aliveStatusCodes": [0, 200, 429],
-  "ignorePatterns": [
-    { "generated": "packages/docs/src/content/docs/reference/plugins/*.md" }
-  ]
-}

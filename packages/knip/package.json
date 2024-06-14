@@ -41,7 +41,7 @@
     "lint": "biome lint ../..",
     "format": "biome format --write .",
     "test": "bun test test/*.test.ts test/**/*.test.ts",
-    "test:node": "glob -c \"npx -y tsx@4.7.1 --test --import ./transform-test.js\" \"test/**/*.test.ts\"",
+    "test:node": "glob -c \"npx tsx --test --import ./transform-test.js\" \"test/**/*.test.ts\"",
     "watch": "npm link && tsc --watch",
     "prebuild": "node rmdir.js dist",
     "build": "tsc",
@@ -93,8 +93,9 @@
     "glob": "^10.3.12",
     "playwright": "^1.44.1",
     "release-it": "^17.3.0",
+    "tsx": "^4.15.4",
     "type-fest": "^4.20.0",
-    "typescript": "^5.4.5"
+    "typescript": ">=5.0.4"
   },
   "engines": {
     "node": ">=18.6.0"

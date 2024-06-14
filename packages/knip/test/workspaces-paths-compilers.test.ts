@@ -7,10 +7,13 @@ import baseCounters from './helpers/baseCounters.js';
 
 test('Find unused files, dependencies and exports in workspaces (w/ paths + compilers)', async () => {
   const cwd = resolve('fixtures/workspaces-paths-compilers');
-  const { counters } = await main({
+  const { counters, issues } = await main({
     ...baseArguments,
     cwd,
   });
+
+  console.log(issues.files);
+  console.log(issues.dependencies);
 
   assert.deepEqual(counters, {
     ...baseCounters,
